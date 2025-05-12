@@ -150,6 +150,25 @@
           }
         }
       }
+
+      .phone-input {
+        padding: 16px 20px;
+        border: 1.5px solid $input-border;
+        border-radius: $radius;
+        outline: none;
+        font-size: 1rem;
+        background: $input-bg;
+        transition: border 0.2s;
+        width: 100%;
+
+        &::placeholder {
+          color: $text-grey;
+        }
+
+        &:focus {
+          border: 1.5px solid $yellow;
+        }
+      }
     }
   }
 
@@ -204,31 +223,47 @@
       &:hover {
         background: $yellow-hover;
       }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
     }
   }
+
+  .submit-error {
+    color: $error;
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    padding: 12px;
+    background: rgba($error, 0.1);
+    border-radius: $radius;
+  }
+
   @media (max-width: 992px) {
     .signup-lesson-bg {
       padding: 60px 20px;
-  
+
       .signup-lesson-title {
         font-size: 48px;
       }
-  
+
       .signup-lesson-content {
         flex-direction: column;
         height: auto;
         gap: 30px;
-  
+
         .signup-lesson-form {
           width: 100%;
           height: auto;
         }
       }
-  
+
       .form-actions {
         flex-direction: column;
         gap: 12px;
-  
+
         .back-btn,
         .submit-btn {
           width: 100%;
@@ -238,21 +273,21 @@
       }
     }
   }
-  
+
   @media (max-width: 576px) {
     .signup-lesson-bg {
       .signup-lesson-title {
         font-size: 36px;
       }
-  
+
       .signup-lesson-content {
         .signup-lesson-form {
           padding: 24px 20px;
         }
-  
+
         .form-row {
           flex-direction: column;
-  
+
           .age-group,
           .course-group {
             width: 100%;
@@ -261,7 +296,7 @@
       }
     }
   }
-}  
+}
 @keyframes dropdown-animation {
   0% {
     opacity: 0;
