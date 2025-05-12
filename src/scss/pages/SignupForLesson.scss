@@ -1,0 +1,274 @@
+@use "../abstract/variables" as *;
+
+.signup-lesson-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1210px;
+  gap: 45px;
+  padding: 80px 0 50px 0;
+  height: 100%;
+
+  .signup-lesson-title {
+    color: #fff;
+    font-size: 65px;
+    font-weight: 700;
+    text-align: center;
+    font-family: "Tektur", sans-serif;
+  }
+
+  .signup-lesson-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 51vh;
+
+    .signup-lesson-form {
+      background: #fff;
+      border-radius: 14px;
+      padding: 32px 32px 24px 32px;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      width: 55%;
+      height: 100%;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        label {
+          font-size: 0.95rem;
+          color: rgba(91, 91, 91, 1);
+          font-weight: 500;
+        }
+
+        input {
+          padding: 16px 20px;
+          border: 1.5px solid $input-border;
+          border-radius: $radius;
+          outline: none;
+          font-size: 1rem;
+          background: $input-bg;
+          transition: border 0.2s;
+
+          &::placeholder {
+            color: $text-grey;
+          }
+
+          &:focus {
+            border: 1.5px solid $yellow;
+          }
+
+          &.error {
+            border: 1.5px solid $error;
+          }
+        }
+      }
+
+      .error-msg {
+        color: $error;
+        font-size: 0.85rem;
+        margin-top: 2px;
+        margin-left: 2px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 12px;
+
+        .age-group,
+        .course-group {
+          flex: 1 1 50%;
+        }
+      }
+
+      .course-group {
+        min-width: 180px;
+
+        .custom-dropdown {
+          position: relative;
+          user-select: none;
+          background: $input-bg;
+          border: 1.5px solid $input-border;
+          border-radius: $radius;
+          transition: border 0.2s;
+
+          &.error {
+            border: 1.5px solid $error;
+          }
+          &.open,
+          &:focus-within {
+            border: 1.5px solid $yellow;
+          }
+
+          .dropdown-selected {
+            padding: 10px 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1rem;
+
+            .dropdown-arrow {
+              margin-left: 8px;
+              font-size: 1.1em;
+            }
+          }
+
+          .dropdown-list {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1.5px solid $input-border;
+            border-radius: $radius;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            max-height: 160px;
+            overflow-y: auto;
+            animation: dropdown-animation 0.2s ease-in-out;
+
+            .dropdown-item {
+              padding: 12px 16px;
+              cursor: pointer;
+              font-size: 1rem;
+              transition: background 0.15s;
+
+              &:hover {
+                background: $yellow-hover;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .yellow-corner {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    background: $yellow;
+    border-radius: 0 0 220px 0;
+    z-index: 1;
+
+    &.top-right {
+      top: 0;
+      right: 0;
+      border-radius: 0 0 0 220px;
+    }
+    &.bottom-left {
+      left: 0;
+      bottom: 0;
+      border-radius: 0 220px 0 0;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-top: 18px;
+    gap: 18px;
+    width: 100%;
+
+    .back-btn,
+    .submit-btn {
+      border-radius: $radius;
+      padding: 15px 73px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .back-btn {
+      background: #fff;
+      color: #222;
+    }
+
+    .submit-btn {
+      background: $yellow;
+      color: #fff;
+      border: none;
+      box-shadow: 0 0px 26px #ffd500;
+      font-weight: 400;
+
+      &:hover {
+        background: $yellow-hover;
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    .signup-lesson-bg {
+      padding: 60px 20px;
+  
+      .signup-lesson-title {
+        font-size: 48px;
+      }
+  
+      .signup-lesson-content {
+        flex-direction: column;
+        height: auto;
+        gap: 30px;
+  
+        .signup-lesson-form {
+          width: 100%;
+          height: auto;
+        }
+      }
+  
+      .form-actions {
+        flex-direction: column;
+        gap: 12px;
+  
+        .back-btn,
+        .submit-btn {
+          width: 100%;
+          font-size: 20px;
+          padding: 14px 0;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .signup-lesson-bg {
+      .signup-lesson-title {
+        font-size: 36px;
+      }
+  
+      .signup-lesson-content {
+        .signup-lesson-form {
+          padding: 24px 20px;
+        }
+  
+        .form-row {
+          flex-direction: column;
+  
+          .age-group,
+          .course-group {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}  
+@keyframes dropdown-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
