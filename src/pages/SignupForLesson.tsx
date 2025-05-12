@@ -67,7 +67,11 @@ const SignupForLesson = () => {
                 name="age"
                 type="date"
                 value={age || ""}
-                onChange={(e) => setAge(e.target.value)}
+                onChange={(e) => {
+                  const date = new Date(e.target.value);
+                  const formattedDate = date.toISOString().split("T")[0];
+                  setAge(formattedDate);
+                }}
               />
             </div>
 

@@ -14,7 +14,7 @@ export const useSignupForm = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [name, setName] = useState("");
   const [secondName, setSecondName] = useState("");
-  const [phone, setPhone] = useState("+99");
+  const [phone, setPhone] = useState("+998");
   const [age, setAge] = useState("");
   const [course, setCourse] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
