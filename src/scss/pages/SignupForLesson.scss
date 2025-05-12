@@ -1,23 +1,23 @@
 @use "../abstract/variables" as *;
 
 .signup-lesson-bg {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1210px;
+  max-width: 1100px;
   gap: 45px;
-  padding: 80px 0 50px 0;
   height: 100%;
+  width: 100vw;
 
   .signup-lesson-title {
     color: #fff;
-    font-size: 65px;
+    font-size: clamp(32px, 5vw, 65px);
     font-weight: 700;
     text-align: center;
     font-family: "Tektur", sans-serif;
+    padding: 0 15px;
   }
 
   .signup-lesson-content {
@@ -25,18 +25,23 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 51vh;
+    height: auto;
+    min-height: 51vh;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
 
     .signup-lesson-form {
       background: #fff;
       border-radius: 14px;
-      padding: 32px 32px 24px 32px;
+      padding: clamp(20px, 3vw, 32px);
       box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 16px;
-      width: 55%;
+      width: 100%;
+      max-width: 600px;
       height: 100%;
 
       .form-group {
@@ -45,19 +50,20 @@
         gap: 6px;
 
         label {
-          font-size: 0.95rem;
+          font-size: clamp(0.85rem, 2vw, 0.95rem);
           color: rgba(91, 91, 91, 1);
           font-weight: 500;
         }
 
         input {
-          padding: 16px 20px;
+          padding: clamp(12px, 2vw, 16px) clamp(15px, 2vw, 20px);
           border: 1.5px solid $input-border;
           border-radius: $radius;
           outline: none;
-          font-size: 1rem;
+          font-size: clamp(0.9rem, 2vw, 1rem);
           background: $input-bg;
           transition: border 0.2s;
+          width: 100%;
 
           &::placeholder {
             color: $text-grey;
@@ -170,6 +176,13 @@
         }
       }
     }
+
+    img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
   }
 
   .yellow-corner {
@@ -242,57 +255,109 @@
   }
 
   @media (max-width: 992px) {
-    .signup-lesson-bg {
-      padding: 60px 20px;
+    padding: 40px 15px;
 
-      .signup-lesson-title {
-        font-size: 48px;
+    .signup-lesson-content {
+      flex-direction: column;
+      height: auto;
+      gap: 30px;
+
+      .signup-lesson-form {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
       }
 
-      .signup-lesson-content {
-        flex-direction: column;
-        height: auto;
-        gap: 30px;
-
-        .signup-lesson-form {
-          width: 100%;
-          height: auto;
-        }
+      img {
+        display: none;
       }
+    }
 
-      .form-actions {
-        flex-direction: column;
-        gap: 12px;
+    .form-actions {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
 
-        .back-btn,
-        .submit-btn {
-          width: 100%;
-          font-size: 20px;
-          padding: 14px 0;
-        }
+      .back-btn,
+      .submit-btn {
+        width: 100%;
+        font-size: clamp(16px, 3vw, 24px);
+        padding: 12px 0;
+      }
+    }
+
+    .yellow-corner {
+      width: 180px;
+      height: 180px;
+      z-index: -1;
+      opacity: 0.7;
+
+      &.top-right {
+        border-radius: 0 0 0 180px;
+      }
+      &.bottom-left {
+        border-radius: 0 180px 0 0;
       }
     }
   }
 
   @media (max-width: 576px) {
-    .signup-lesson-bg {
-      .signup-lesson-title {
-        font-size: 36px;
+    padding: 30px 10px;
+    gap: 30px;
+
+    .signup-lesson-content {
+      .signup-lesson-form {
+        padding: 20px 15px;
       }
 
-      .signup-lesson-content {
-        .signup-lesson-form {
-          padding: 24px 20px;
-        }
+      img {
+        max-width: 250px;
+      }
+    }
 
-        .form-row {
-          flex-direction: column;
+    .form-row {
+      flex-direction: column;
+      gap: 16px;
 
-          .age-group,
-          .course-group {
-            width: 100%;
-          }
-        }
+      .age-group,
+      .course-group {
+        width: 100%;
+      }
+    }
+
+    .yellow-corner {
+      width: 120px;
+      height: 120px;
+      z-index: -1;
+      opacity: 0.5;
+
+      &.top-right {
+        border-radius: 0 0 0 120px;
+      }
+      &.bottom-left {
+        border-radius: 0 120px 0 0;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    .signup-lesson-content {
+      img {
+        max-width: 200px;
+      }
+    }
+
+    .yellow-corner {
+      width: 120px;
+      height: 120px;
+
+      &.top-right {
+        border-radius: 0 0 0 120px;
+      }
+      &.bottom-left {
+        border-radius: 0 120px 0 0;
       }
     }
   }

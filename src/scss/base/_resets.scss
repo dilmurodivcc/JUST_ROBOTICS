@@ -6,16 +6,19 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
+
 
 body {
   background-color: $main-bg;
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
 }
+
 
 a {
   text-decoration: none;
